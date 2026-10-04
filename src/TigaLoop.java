@@ -68,11 +68,21 @@ public class TigaLoop {
         System.out.println();
         System.out.println("Sampai println  : " + sampaiPrintln + " kali");
 
+        //KENAPA LOOP SARINGAN TIDAK BERHENTI DI i = 8?
+        // * ---------------------------------------------------------------
+        // * Di dalam badan loop, continue (lewati genap) ditulis SEBELUM break
+        // * (berhenti kalau i > 7). Saat i = 8, angka itu genap, sehingga continue
+        // * langsung melompat ke iterasi berikutnya dan baris break tidak pernah
+        // * sempat dicek. Loop baru berhenti pada i = 9 (ganjil, lolos continue,
+        // * lalu 9 > 7 membuat break jalan). Hasilnya tetap 1 3 5 7 karena 9
+        // * berhenti sebelum sampai ke println. Kalau urutannya dibalik (break
+        // * dulu), loop berhenti di i = 8.
+
         scanner.close();
     }
 }
 //KENAPA BARIS for DAN while KOSONG, TAPI do-while TIDAK?
-//---------------------------------------------------------------
+
 //Dua baris terakhir yang jadi intinya: for dan while mengecek kondisi
 //SEBELUM putaran pertama, jadi keduanya tidak mencetak apa pun. do-while
 //mengeceknya SESUDAH, jadi satu putaran sudah terlanjur berjalan.
